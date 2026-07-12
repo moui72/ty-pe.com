@@ -1,0 +1,296 @@
+<!doctype html>
+<html lang="en">
+<head>
+<meta charset="utf-8" />
+<meta name="viewport" content="width=device-width, initial-scale=1" />
+<title>ty-pe.com — Tyler Peckenpaugh's software</title>
+<meta name="description" content="This is where Tyler Peckenpaugh hosts his software. A small index of projects: yarg, sync-tab-scroll, artifact-driven-dev, assisted-review." />
+<link rel="icon" href="data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' viewBox='0 0 100 100'%3E%3Ctext y='.9em' font-size='90' font-family='monospace'%3E%E2%8C%A8%3C/text%3E%3C/svg%3E" />
+<meta property="og:title" content="ty-pe.com — Tyler Peckenpaugh's software" />
+<meta property="og:description" content="A small index of software Tyler Peckenpaugh hosts and builds." />
+<meta property="og:type" content="website" />
+<meta property="og:url" content="https://ty-pe.com" />
+<link rel="preconnect" href="https://fonts.googleapis.com" />
+<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin />
+<link href="https://fonts.googleapis.com/css2?family=Fraunces:ital,opsz,wght@0,9..144,400;0,9..144,500;0,9..144,600;1,9..144,400&family=IBM+Plex+Mono:wght@400;500&display=swap" rel="stylesheet" />
+<style>
+  :root {
+    --paper: #FBFAF6;
+    --ink: #17140F;
+    --muted: #6E6860;
+    --rule: #E7E2D8;
+    --accent: #1F6390;
+    --accent-soft: #CFE6F2;
+    --tag-ink: #235E86;
+    --serif: "Fraunces", Georgia, "Times New Roman", serif;
+    --mono: "IBM Plex Mono", ui-monospace, "SF Mono", Menlo, monospace;
+    --maxw: 46rem;
+  }
+  @media (prefers-color-scheme: dark) {
+    :root {
+      --paper: #131109;
+      --ink: #ECE7DC;
+      --muted: #928B7F;
+      --rule: #2B2720;
+      --accent: #86B9DD;
+      --accent-soft: #1C3446;
+      --tag-ink: #A9D4EE;
+    }
+  }
+
+  * { box-sizing: border-box; }
+  html { -webkit-text-size-adjust: 100%; }
+  body {
+    margin: 0;
+    background: var(--paper);
+    color: var(--ink);
+    font-family: var(--serif);
+    font-optical-sizing: auto;
+    line-height: 1.5;
+    -webkit-font-smoothing: antialiased;
+    text-rendering: optimizeLegibility;
+  }
+
+  .wrap {
+    max-width: var(--maxw);
+    margin: 0 auto;
+    padding: clamp(1.6rem, 4vw, 3rem) clamp(1.3rem, 5vw, 2.5rem) 4rem;
+  }
+
+  /* --- top wordmark --- */
+  .mark {
+    font-family: var(--mono);
+    font-size: 0.82rem;
+    letter-spacing: 0.02em;
+    color: var(--muted);
+    display: flex;
+    align-items: baseline;
+    gap: 0.55rem;
+    padding-top: 0.4rem;
+  }
+  .mark b { color: var(--ink); font-weight: 500; }
+  .mark .dot { color: var(--accent); }
+
+  /* --- hero --- */
+  .hero {
+    margin: clamp(3.5rem, 13vh, 8rem) 0 clamp(3rem, 9vh, 5.5rem);
+  }
+  .hero h1 {
+    font-family: var(--serif);
+    font-weight: 400;
+    font-size: clamp(2.05rem, 6.4vw, 3.6rem);
+    line-height: 1.08;
+    letter-spacing: -0.015em;
+    margin: 0;
+    text-wrap: balance;
+  }
+  .hero a.name {
+    color: var(--ink);
+    text-decoration: none;
+    background-image: linear-gradient(var(--accent), var(--accent));
+    background-repeat: no-repeat;
+    background-position: 0 92%;
+    background-size: 100% 2px;
+    padding-bottom: 0.04em;
+    transition: background-size 0.18s ease, color 0.18s ease;
+  }
+  .hero a.name .hl { color: var(--accent); font-weight: 600; }
+  .hero a.name:hover,
+  .hero a.name:focus-visible { color: var(--paper); background-size: 100% 100%; outline: none; }
+  .hero a.name:hover .hl,
+  .hero a.name:focus-visible .hl { color: inherit; }
+  .cursor {
+    display: inline-block;
+    width: 0.06em;
+    min-width: 2px;
+    height: 0.92em;
+    margin-left: 0.06em;
+    transform: translateY(0.08em);
+    background: var(--accent);
+    animation: blink 1.15s steps(1) infinite;
+  }
+  @keyframes blink { 0%, 50% { opacity: 1; } 50.01%, 100% { opacity: 0; } }
+
+  /* --- section eyebrow --- */
+  .eyebrow {
+    font-family: var(--mono);
+    font-size: 0.72rem;
+    letter-spacing: 0.22em;
+    text-transform: uppercase;
+    color: var(--muted);
+    margin: 0 0 0.2rem;
+  }
+
+  /* --- project list --- */
+  .list { list-style: none; margin: 0; padding: 0; }
+  .item {
+    display: block;
+    padding: 1.7rem 0 1.6rem;
+    border-top: 1px solid var(--rule);
+  }
+  .item:last-child { border-bottom: 1px solid var(--rule); }
+
+  .item-head {
+    display: flex;
+    flex-wrap: wrap;
+    align-items: baseline;
+    gap: 0.5rem 0.7rem;
+    margin-bottom: 0.55rem;
+  }
+  .handle {
+    font-family: var(--mono);
+    font-weight: 500;
+    font-size: clamp(1.02rem, 2.9vw, 1.28rem);
+    letter-spacing: -0.01em;
+    color: var(--ink);
+  }
+  .handle .at { color: var(--accent); }
+  .abbr {
+    font-family: var(--mono);
+    font-size: 0.72rem;
+    color: var(--muted);
+    letter-spacing: 0.02em;
+  }
+  .tag {
+    margin-left: auto;
+    font-family: var(--mono);
+    font-size: 0.66rem;
+    letter-spacing: 0.13em;
+    text-transform: uppercase;
+    color: var(--tag-ink);
+    background: var(--accent-soft);
+    padding: 0.24em 0.6em;
+    border-radius: 999px;
+    white-space: nowrap;
+    align-self: center;
+  }
+
+  .desc {
+    margin: 0 0 0.85rem;
+    font-size: 1.03rem;
+    line-height: 1.5;
+    color: var(--ink);
+    max-width: 40rem;
+  }
+
+  .links {
+    display: flex;
+    flex-wrap: wrap;
+    gap: 0.45rem 1.3rem;
+    font-family: var(--mono);
+    font-size: 0.83rem;
+  }
+  .links a {
+    color: var(--muted);
+    text-decoration: none;
+    display: inline-flex;
+    align-items: center;
+    gap: 0.3em;
+    padding: 0.1em 0;
+    border-bottom: 1px solid transparent;
+    transition: color 0.16s ease, border-color 0.16s ease;
+  }
+  .links a .arw { font-size: 0.9em; opacity: 0.6; transition: transform 0.16s ease; }
+  .links a:hover, .links a:focus-visible {
+    color: var(--accent);
+    border-color: var(--accent);
+    outline: none;
+  }
+  .links a:hover .arw, .links a:focus-visible .arw { transform: translate(1px, -1px); opacity: 1; }
+  .links a.primary { color: var(--ink); }
+  .links a.primary:hover, .links a.primary:focus-visible { color: var(--accent); }
+
+  /* --- colophon --- */
+  .colophon {
+    margin-top: 3.4rem;
+    padding-top: 1.4rem;
+    border-top: 1px solid var(--rule);
+    font-family: var(--mono);
+    font-size: 0.74rem;
+    line-height: 1.8;
+    color: var(--muted);
+    display: flex;
+    flex-wrap: wrap;
+    justify-content: space-between;
+    gap: 0.6rem 1.5rem;
+  }
+  .colophon a { color: var(--muted); text-decoration: none; border-bottom: 1px solid var(--rule); }
+  .colophon a:hover, .colophon a:focus-visible { color: var(--accent); border-color: var(--accent); outline: none; }
+  .colophon .set em { font-style: italic; color: var(--ink); font-family: var(--serif); font-size: 0.95rem; }
+
+  @media (prefers-reduced-motion: reduce) {
+    .cursor { animation: none; }
+    * { transition: none !important; }
+  }
+</style>
+</head>
+<body>
+  <main class="wrap">
+    <div class="mark"><b>ty-pe</b><span class="dot">.com</span></div>
+
+    <header class="hero">
+      <h1>This is where <a class="name" href="https://peckenpaugh.us"><span class="hl">Ty</span>ler <span class="hl">Pe</span>ckenpaugh</a> hosts his software.<span class="cursor" aria-hidden="true"></span></h1>
+    </header>
+
+    <p class="eyebrow">Projects · 4</p>
+    <ul class="list">
+
+      <li class="item">
+        <div class="item-head">
+          <span class="handle"><span class="at">@</span>yet-another-rank-games</span>
+          <span class="abbr">yarg</span>
+          <span class="tag">source</span>
+        </div>
+        <p class="desc">Build ranked lists of board games from your BoardGameGeek collection, through a fun pairwise-comparison flow.</p>
+        <div class="links">
+          <a class="primary" href="https://github.com/moui72/yet-another-rank-games">github<span class="arw">↗</span></a>
+        </div>
+      </li>
+
+      <li class="item">
+        <div class="item-head">
+          <span class="handle"><span class="at">@</span>sync-tab-scroll</span>
+          <span class="abbr">sts</span>
+          <span class="tag">live</span>
+        </div>
+        <p class="desc">A synchronized tab-scrolling app for musicians playing together remotely.</p>
+        <div class="links">
+          <a class="primary" href="https://sts.ty-pe.com">sts.ty-pe.com<span class="arw">↗</span></a>
+          <a href="https://github.com/kinda-bad/sync-tab-scroll">github<span class="arw">↗</span></a>
+        </div>
+      </li>
+
+      <li class="item">
+        <div class="item-head">
+          <span class="handle"><span class="at">@</span>artifact-driven-dev</span>
+          <span class="abbr">ardd</span>
+          <span class="tag">source · writeup</span>
+        </div>
+        <p class="desc">A spec-driven workflow system for Claude Code, built around capturing decisions you've already made rather than eliciting them.</p>
+        <div class="links">
+          <a class="primary" href="https://github.com/moui72/artifact-driven-dev">github<span class="arw">↗</span></a>
+          <a href="https://peckenpaugh.us/blog/bad-at-discipline-built-a-tool-that-does-it/">blog<span class="arw">↗</span></a>
+        </div>
+      </li>
+
+      <li class="item">
+        <div class="item-head">
+          <span class="handle"><span class="at">@</span>assisted-review</span>
+          <span class="tag">npm</span>
+        </div>
+        <p class="desc">PR review one hunk at a time — a focused browser workspace where Claude analyzes each chunk and you stay the reviewer.</p>
+        <div class="links">
+          <a class="primary" href="https://github.com/moui72/assisted-review">github<span class="arw">↗</span></a>
+          <a href="https://www.npmjs.com/package/assisted-review">npm<span class="arw">↗</span></a>
+        </div>
+      </li>
+
+    </ul>
+
+    <footer class="colophon">
+      <span>ty-pe.com — <a href="https://peckenpaugh.us">peckenpaugh.us</a> · <a href="https://github.com/moui72">github.com/moui72</a></span>
+      <span class="set">Set in <em>Fraunces</em> &amp; <em>IBM&nbsp;Plex&nbsp;Mono</em>.</span>
+    </footer>
+  </main>
+</body>
+</html>
